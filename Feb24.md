@@ -42,9 +42,9 @@
   - Best case: N log N
   - Worst case: N^2 --> picks a bad pivot. Could be worse than selection sort or bubble sort
   - No temporary arrays
-- Big 0
+- Big O
   - O(N^2)
     - N size of the problem (oftentimes # of elements)
-    - 0 has nothing to do with the worst case/best case/etc
-    - 0 is the number of times N^2 is done (eg: 1/2 N^2, 3/4 N^2)
+    - O has nothing to do with the worst case/best case/etc
+    - O is the number of times N^2 is done (eg: 1/2 N^2, 3/4 N^2)
 
