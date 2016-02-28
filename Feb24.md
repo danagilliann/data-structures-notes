@@ -1,0 +1,50 @@
+# Feb 24
+
+- Quadratic Sorts --> O(n^2)
+  - Insertion sort
+  - Selection sort
+- Fast O(N log N) sorts
+  - Merge sort - done recursively
+  - Quick sort - done recursively
+  - Arrays.sort()
+- Merge sort
+  - Mechanical
+  - Best case: N log N
+    - Optimizing: Iterate in the *wrapper* not before the recursive call! --> Not done
+  - Stopping the splitting: 1 element array
+  - Merging (using 2 arrays)
+    - While loop iterates until one of the arrays are empty
+    - If you reach the end of arr1 then you only get the elements from arr2
+  - Merging (using 1 arrays)
+    - Assumes that the two ranges (leftFirst - leftLast) and (rightFirst - rightLast) are adjacent
+    - Copies the elements from the temporary array to the original array
+  - Have a wrapper method and introduce first index and last index
+  - Two recursive calls with the splitting
+    - Never interfere because they *use different indices*
+    - Second recursive call takes in midpoint + 1
+  - O(N log N)
+    - The splitting take log N (base 2)
+    - Merging takes N times
+    - Therefore: N log N (Merging * splitting)
+  - *Know how to write merge sort*
+  - *Manually apply merge sort*
+  - *Not linear* it's N log N performance
+- Quick sort
+  - Generally faster than merge sort
+  - Takes the divide and conquer approach, but different implementation
+  - Choose a pivot. Part the array smallest/largest to pivot
+  - Most work is partitioning
+  - Pivot should try not to be largest or smallest
+    - Get three values and choose from there
+    - Can use statistical inference
+  - *Know how to manually deal with it*
+  - On average: Faster than merge sort
+  - Best case: N log N
+  - Worst case: N^2 --> picks a bad pivot. Could be worse than selection sort or bubble sort
+  - No temporary arrays
+- Big 0
+  - O(N^2)
+    - N size of the problem (oftentimes # of elements)
+    - 0 has nothing to do with the worst case/best case/etc
+    - 0 is the number of times N^2 is done (eg: 1/2 N^2, 3/4 N^2)
+
