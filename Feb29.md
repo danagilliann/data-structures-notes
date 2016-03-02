@@ -1,0 +1,129 @@
+# Feb 29
+- ADT
+  - \*Data type where we do not care about what it does
+  - Stacks and queues look at the ends
+- List: Access any element
+  - Access: Add/remove at any position or modify/retrieve item at any position
+  - Ex: Array, ArrayList
+- Queue: FIFO
+  - Access both ends
+  - Functionality:
+    - Add to back
+    - Remove to front
+- Stack: LIFO
+  - Access to most recent element (top)
+  - Archaic: Push/Pop
+  - Modern: Peek --> Tell me what's there
+- List - array based implementation
+  - Array: provides storage
+  - \*Size: Number of elements
+  - \*Capacity: Actual size of the array (array.length)
+  - Challenges
+    - Add at the end index
+      1. Where you want it to be added
+      2. Is there capacity?
+        - if capacity > size
+          - add 
+          - Efficiency O(1)
+        - else
+          - create a larger array (how much larger)
+          - copy everything (one by one w/o taking advantage of OS functions)
+          - point old array to new one
+          - grow the size by 1.5 (so we don't have to do that every time we add an element)
+          - Efficiency O(N)
+          - Space O(N) --> Price you pay to avoid a higher N efficiency
+    - Add at the front
+      - if capacity > size (Inefficient solution 1)
+        - shift all elements by 1
+        - add to the first position
+        - O(N)
+      - else
+        - create larger array
+        - Copy everything over (shift as you copy) (view notes)
+        - O(N)
+    - Add at a specific index (i)
+      - if capacity > size (Inefficient solution 1)
+        - shift all elements starting at i by 1
+        - add to the ith position
+        - O(N)
+      - else
+        - create larger array
+        - Copy everything over (shift as you copy) (view notes)
+        - O(N)
+    - Remove back
+      - Check if element is there
+      - Approach 1 (Personal)
+        - Decrement the size
+        - Delayed deletion
+        - O(1)
+      - Approach 2 (Real world)
+        - Decrement size
+        - Set the element null
+        - Set compatible with primitive
+        - O(1)
+    - Remove from index i
+      - Shift to 0 starting at [i+1, size-1]
+      - Decrement size
+      - Set size index to null
+      - O(N)
+    - Find
+      - Linear search
+      - O(N)
+- Stack array implementation
+  - Last element of the stack can be at the start or end of array (BETTER AT THE END)
+  - Capacity: Size of array
+  - Array: Actual array based implementation of the stack
+  - Size/Top: # of elements (doubles as location of top)
+  - Add back
+    - Worst: O(N) --> Need new array
+    - Best: O(1)
+  - Remove back
+    - Worst: O(1)
+    - Best: O(1)
+  - Peek
+    - Worst/Best: O(1)
+  - \*Do not iterate
+- Queue
+  - Assume front is 0th index
+    - Add/Enqueue
+      - Best: O(1)
+      - Worst: O(N) --> Array needs to grow
+    - Remove/Dequeue (Do not confuse with Deque)
+      - Removes front
+      - Best/Worst: O(N) --> Have to shift
+  - Anchor last index to index 0
+    - Add/Enqueue
+      - Best/Worst: O(N) --> Shift elements
+    - Remove
+      - Best/Worst: O(1)
+  - Allow both to fluctuate
+    - Keep track of where the front and back are
+    - Remove
+      - Pointer to front decreases
+      - Best/Worst: O(1)
+    - Add
+      - Pointer at back increases
+      - Best: O(1)
+      - Worst: O(N) --> Have to shift
+    - Use modulus to determine whether the "back" has reached the end of the index (View code examples)
+    - When all space is filled, and elements need to be added, make more space
+    - Allocating more space
+      - Go from front until end of array
+      - Go from back until the "front" of the array
+      - Front points to actual front
+      - Back points to actual back
+- Using modulus for queues array implementation
+  - `back = (back + 1) % capacity`
+    - Anything < capacity gets that number returns
+    - Anything == capcity returns 0
+  - `something % capacity` enables wrapping
+- Parsing Mathematical operations
+  - For every OPEN you need CLOSE
+  - Each CLOSE comes before OPEN
+  - CLOSE applies to most recent OPEN
+  - Iterate over string
+    - if see OPEN bracket, push onto stack
+    - if see CLOSE bracket
+      - pop stack and compare to CLOSE
+      - if problem --> error
+  - If stack not empty after done with that, error
