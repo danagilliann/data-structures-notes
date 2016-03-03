@@ -11,8 +11,8 @@ mergeSortRec(int[] arr, int firstIndex, int lastIndex) {
     return;
   }
   mid = (firstIndex + lastIndex)/2;
-  mergeSort(arr, firstIndex, mid);
-  mergeSort(arr, mid+1, lastIndex);
+  mergeSortRec(arr, firstIndex, mid);
+  mergeSortRec(arr, mid+1, lastIndex);
   merge(arr, firstIndex, mid, mid+1, lastIndex);
 }
 
