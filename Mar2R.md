@@ -2,45 +2,47 @@
 
 - Merge sort
 ```java
-private void doMergeSort(int lowerIndex, int higherIndex) {
-     
-    if (lowerIndex < higherIndex) { // Base case
-        int middle = lowerIndex + (higherIndex - lowerIndex) / 2; // Get midpoint
-        
-        // Below step sorts the left side of the array using the middle
-        doMergeSort(lowerIndex, middle);
-        
-        // Below step sorts the right side of the array using the middle
-        doMergeSort(middle + 1, higherIndex);
-        
-        // Now merge both sides
-        mergeParts(lowerIndex, middle, higherIndex);
-    }
+mergeSort(int[] arr) {
+  mergeSortRec(arr, 0, arr.length-1);
 }
 
-private void mergeParts(int lowerIndex, int middle, int higherIndex) {
-    for (int i = lowerIndex; i <= higherIndex; i++) {
-        // Copy all the contents of the input array to a temporary array
-        tempMergArr[i] = array[i];
+mergeSortRec(int[] arr, int firstIndex, int lastIndex) {
+  if(firstIndex == lastIndex) {
+    return;
+  }
+  mid = (firstIndex + lastIndex)/2;
+  mergeSort(arr, firstIndex, mid);
+  mergeSort(arr, mid+1, lastIndex);
+  merge(arr, firstIndex, mid, mid+1, lastIndex);
+}
+
+merge(int[] arr, int leftFirst, int leftLast, int rightFirst, int rightLast) {
+  int[] temp = new int[rightLast-leftFirst+1];
+  int indexLeft = leftFirst;
+  int indexRight = rightFirst;
+  int index = 0;
+
+  while(indexLeft <= leftLast && indexRight <= rightLast) {
+    if(arr[indexLeft] < arr[indexRight]) {
+      temp[index] = arr[indexLeft];
+      ++indexLeft;
+    } else {
+      temp[index] = arr[indexRight];
+      ++indexRight;
     }
-    int i = lowerIndex;
-    int j = middle + 1;
-    int k = lowerIndex;
-    while (i <= middle && j <= higherIndex) {
-        if (tempMergArr[i] <= tempMergArr[j]) {
-            array[k] = tempMergArr[i]; 
-            i++; // Sentinel 
-        } else {
-            array[k] = tempMergArr[j];
-            j++; // Sentinel
-        }
-        k++;
-    }
-    while (i <= middle) {
-        array[k] = tempMergArr[i];
-        k++;
-        i++;
-    }
+    ++index
+  }
+  for(int i=indexLeft; i<leftLast; ++i) {
+    temp[index] = arr[i];
+    ++index;
+  }
+  for(int k=indexRight; k<rightLast; ++k) {
+    temp[index] = arr[k];
+    ++index;
+  }
+  for(int j=leftFirst; j<temp.length; ++j) {
+    arr[j] = temp[j];
+  }
 }
 ```
 - Quicksort
