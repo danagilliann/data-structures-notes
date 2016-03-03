@@ -32,11 +32,11 @@ merge(int[] arr, int leftFirst, int leftLast, int rightFirst, int rightLast) {
     }
     ++index
   }
-  for(int i=indexLeft; i<leftLast; ++i) {
+  for(int i=indexLeft; i<leftLast+1; ++i) {
     temp[index] = arr[i];
     ++index;
   }
-  for(int k=indexRight; k<rightLast; ++k) {
+  for(int k=indexRight; k<rightLast+1; ++k) {
     temp[index] = arr[k];
     ++index;
   }
