@@ -11,7 +11,7 @@
   - Generic class
   - Pretty good sort alternative to assignment (do this only if there's time)
   - Do not necessarily have to Override contains method (unless you're using contains)
-```
+```java
 public void sort(ClassName list, Comparator<ClassName> comp) {
   for (int i ...) {
     ...
