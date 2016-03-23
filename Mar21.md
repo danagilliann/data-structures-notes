@@ -35,14 +35,14 @@ class LinkedList {
   // find
 }
 ```
-- Insert front
+- Insert front O(1)
 ```
 addFront
   Node tmp = new Node();
   tmp.next = head;
   head = tmp;
 ```
-- Insert back
+- Insert back O(n)
   - Visit every single element
   - Create a curr Node
 ```
@@ -54,7 +54,7 @@ while (curr.next != null)
   curr = curr.next;
 curr.next = temp;
 ```
-- Insert somewhere in middle
+- Insert somewhere in middle O(n)
   - Visit every single element until reach desired index
 ```
 Node curr = head;
