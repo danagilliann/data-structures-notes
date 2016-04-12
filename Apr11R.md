@@ -1,0 +1,21 @@
+# April 11 R
+
+- Prob 1
+  - Gen Tree: 1,2,4,5,6
+  - Binary Tree: 1,4,2,6
+  - BST: 6
+- Prob 3
+  - 1. Right of 17
+  - 2. Right of 7
+  - 3. Left of 32
+  - 4. Right 32
+  - 5. Right of 15 is 21
+  - 6. Left of 10 is 8
+  - 7. 39 --> 35. Remove 35
+  - 8. Right of 55
+  - 9. 25 --> 21. Remove 21
+- Prob 4
+  - Inorder Traversal
+- Prob 7
+- Prob 8
+- Prob 9
